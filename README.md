@@ -1,0 +1,2 @@
+# ERP Sytem for Small Business --- Summer 2021
+ This is an Electron application that encompasses a portion of my research summer grant for Marist College. In it I research and give my own go at the top 3 ERP functions that I believe are most important for a small business. In time I may return to encorporate more but there are the core 3 according to studies conducted by me with real businesses and there needs.

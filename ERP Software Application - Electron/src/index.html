@@ -1,0 +1,80 @@
+<!--index.html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+
+    You can also require other files to run in this process
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ERP Software for Small Business</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <!--<link rel="stylesheet" href="C:\Users\User\Desktop\ERP_For_Small_Business\bootstrap.min.css">-->
+        <script defer src="js/appFunctions.js"></script>
+    </head>
+    <body>
+        <div class="mainApp">
+            <div class="topBar">
+                <div class="titleBar">
+                    <button id="showHideMenus" class="toggleButton"></button>
+                    <img src="icons/icons8-improvement-32.png" alt="">
+                    <div class="title">
+                        ERP for Small Business
+                    </div>
+                </div>
+                <div class="titleBarBtns">
+                    <button id="minimizeBtn" class="topBtn minimizeBtn" title = 'Minimize'></button>
+                    <button id="maximizeBtn" class="topBtn maximizeBtn" title = 'Maximize'></button>
+                    <button id="closeBtn" class="topBtn closeBtn" title = 'Close'></button>
+                </div>
+            </div>
+            <div class="contentArea">
+                <div id="mySidebar" class="leftMenu">
+                    <br></br>
+                        <button id="homeBtn" class="homeBtn" title = 'Take Me to Home Page'>Home</button><br></br>
+                        <button id="accountingBtn" class="accountingBtn" title = 'Accounting Management'>Accounting</button><br></br>
+                        <button id="CRMBtn" class="CRMBtn" title = 'Customer Relationship Management'>CRM</button><br></br>
+                        <button id="inventoryBtn" class="inventoryBtn" title = 'Inventory Management'>Inventory Management</button><br></br>
+                        <div class = "bottomSidebar">
+                            <p class = "bottomSidebarOptions">Node.js Version: <span id="node-version"></span></p>
+                            <p class = "bottomSidebarOptions">Chromium Version: <span id="chrome-version"></span></p>
+                            <p class = "bottomSidebarOptions">Electron Version: <span id="electron-version"></span></p>
+                        </div>
+                </div>
+                <div class="contentPages">
+                    <div id = "homePage" class = "homePage"> Home Page
+                        <p class = "homePage mainContent">
+                            Here I can type whatever info I wish to display, such as my work scheduling form <br>
+                            
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdi6nw7UTRgCPlCYOEs9MRTsvSwSdUIZhM3XpnmdVceU1eVXg/viewform?embedded=true" width="50%" height="650px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                            
+                        </p>
+                        
+                    </div>
+                    <div id = "accountingPage" class = "accountingPage">Accounting Page</div>
+                    <div id = "CRMPage" class = "CRMPage">CRM Page</div>
+                    <div id = "inventoryPage" class = "inventoryPage">Inventory Page</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

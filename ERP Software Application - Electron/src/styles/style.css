@@ -1,0 +1,391 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #949AA7;
+    background-color: #2C313C;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*overflow: hidden;*/
+  }
+  
+  .mainApp{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 0px solid #343B48;
+    -webkit-box-sizing: border-box;
+  }
+  
+  .mainApp > .topBar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+    border-bottom: 3px solid #181D23;
+    background-color: #1b1d23;
+    -webkit-user-select: none;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    z-index: 999;
+   
+  }
+  
+  .topBar > .titleBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .topBar > .titleBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .titleBar > .toggleButton {
+    width: 45px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url('../icons/icons8-menu-16.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer; 
+  }
+  
+  .titleBar > .toggleButton:hover {
+    background-color: #272C36;
+  }
+  
+  .titleBar > .toggleButton:active {
+    background-color: #4F9FEE;
+  }
+  
+  .titleBar > img {
+    margin-left: 10px;
+  }
+  
+  .titleBar > .title {
+    margin-left: 10px;
+    width: 100%;
+    line-height: 30px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    -webkit-app-region: drag;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .topBar > .titleBarBtns {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 40px;
+  }
+  
+  .titleBarBtns > .topBtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  
+  .titleBarBtns > .topBtn:hover {
+    background-color: #272C36;
+  }
+  
+  .titleBarBtns > .topBtn:active {
+    background-color: #4F9FEE;
+  }
+  
+  .titleBarBtns > .minimizeBtn {
+    background-image: url('../icons/icons8-minimize-window-16.png');
+  }
+  
+  .titleBarBtns > .maximizeBtn {
+    background-image: url('../icons/icons8-maximize-button-16.png');
+  }
+  
+  .titleBarBtns > .restoreBtn {
+    background-image: url('../icons/icons8-restore-down-16.png');
+  }
+
+  .titleBarBtns > .closeBtn {
+    background-image: url('../icons/icons8-close-window-16.png');
+  }
+  
+  .mainApp > .contentArea {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .contentArea > .leftMenu {
+    width:0px;
+    height:100%;
+    background-color: #272C36;
+    transition: 0.3s;
+
+    display:table-cell;
+    vertical-align: middle;
+    position:fixed;
+    margin-top: 43px;  
+    
+    overflow: hidden;
+
+    -webkit-box-align: start;
+    -webkit-box-pack: center;
+    display:-webkit-box;
+
+    z-index: 999;
+    
+    
+  }
+
+  /*----Home Button----*/
+  .homeBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    vertical-align: middle;
+        
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e7e7e7;
+    display: inline-block;
+    
+  }
+  .homeBtn:hover{
+    background-color: #343B48;
+  }
+  .homeBtn:active {
+    background-color: #727477;
+  }
+
+  .homeBtn::after {
+    content: '';
+    width: 0px;
+    height: 0.5px;
+    display: block;
+    background: #e7e7e7;
+    transition: 300ms;
+  }
+  
+  .homeBtn:hover::after {
+    width: 100%;
+  }
+
+
+  /*----Accounting Button----*/
+  .accountingBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    vertical-align: middle;
+
+    /*background-image: url('../icons/icons8-ledger-32.png');*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e7e7e7;
+    
+  }
+  .accountingBtn:hover{
+    background-color: #343B48;
+  }
+  .accountingBtn:active {
+    background-color: #727477;
+  }
+  .accountingBtn::after {
+    content: '';
+    width: 0px;
+    height: 0.5px;
+    display: block;
+    background: #e7e7e7;
+    transition: 300ms;
+  }
+  .accountingBtn:hover::after {
+    width: 100%;
+  }
+  
+  /*----CRM Button----*/
+  .CRMBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    vertical-align: middle;
+
+    /*background-image: url('../icons/icons8-reception-32.png');*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e7e7e7;
+   
+  }
+  .CRMBtn:hover{
+    background-color: #343B48;
+  }
+
+  .CRMBtn:active {
+    background-color: #727477;
+  }
+  .CRMBtn::after {
+    content: '';
+    width: 0px;
+    height: 0.5px;
+    display: block;
+    background: #e7e7e7;
+    transition: 300ms;
+  }
+  .CRMBtn:hover::after {
+    width: 100%;
+  }
+
+  /*----Inventory Button----*/
+  .inventoryBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    vertical-align: middle;
+    
+    /*background-image: url('../icons/icons8-inventory-flow-32.png');*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #e7e7e7;
+  
+  }
+  .inventoryBtn:hover{
+    background-color: #343B48;
+  }
+
+  .inventoryBtn:active {
+    background-color: #727477;
+  }
+  .inventoryBtn::after {
+    content: '';
+    width: 0px;
+    height: 0.5px;
+    display: block;
+    background: #e7e7e7;
+    transition: 300ms;
+  }
+  .inventoryBtn:hover::after {
+    width: 100%;
+  }
+
+
+  /*----Content Page----*/
+  .contentArea > .contentPages {
+    width: 100%;
+    height: 93.75;
+    margin-top: 65px;
+    position: absolute;
+    text-align: center;   
+  }
+
+  .contentPages > .homePage {
+    position: absolute;
+    margin-left: calc(50%-50vw);
+    width: 100%;
+  }
+  .contentPages > .accountingPage {
+    position: absolute;
+    margin-left: calc(50%-50vw);
+    width: 100%;
+  }
+  .contentPages > .CRMPage {
+    position: absolute;
+    margin-left: calc(50%-50vw);
+    width: 100%;
+  }
+  .contentPages > .inventoryPage {
+    position: absolute;
+    margin-left: calc(50%-50vw);
+    width: 100%;
+  }
+
+  .homePage > .mainContent {
+    color:antiquewhite;
+  }
+
+
+  /*----MiscStyling and Scrollbar----*/
+  .inline{
+    display:inline-block;   
+  }
+
+  .bottomSidebar {
+    position:absolute;
+    bottom: 40px;
+    left: 10px;
+    
+    
+  }
+  .bottomSidebarOptions {
+    font-size: xx-small;
+    
+  }
+
+  /* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1b1d23 #727477;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  margin-top: 43px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1b1d23;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #727477;
+  border-radius: 20px;
+  border: 3px solid #1b1d23;
+}
+
+  
+  
+  
+  
+  
+  
+  
+  

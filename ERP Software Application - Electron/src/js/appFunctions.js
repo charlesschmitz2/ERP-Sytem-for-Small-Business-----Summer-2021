@@ -127,4 +127,38 @@ inventoryBtn.addEventListener('click', ()=>{
 
 
 //Database Functionality and Connections
+const {Pool, Client} = require('pg');
 
+
+const pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'ERP_Small_Business_Project',
+    password: 'Cas6768890',
+    port: 5432,
+});
+
+pool.on('error', (err, client) => {
+    console.log('Error:', err);
+});
+
+const query = `
+SELECT *
+FROM mock_data
+`;
+
+pool.connect()
+    .then((client) => {
+        client.query(query)
+            .then(res => {
+                for (let row of res.rows) {
+                    console.log(row);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    })
+    .catch(err => {
+        console.error(err);
+    });

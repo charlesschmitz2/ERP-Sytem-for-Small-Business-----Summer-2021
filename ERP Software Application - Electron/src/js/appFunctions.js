@@ -55,42 +55,76 @@ showHideMenus.addEventListener('click', ()=> {
     }
 })
 
+
 //Set inital hidden and visible values, then once that is done add button click functions for each page button 
-  document.getElementById("homePage").style.visibility = "visible";
-  document.getElementById("accountingPage").style.visibility = "hidden";
-  document.getElementById("CRMPage").style.visibility = "hidden";
-  document.getElementById("inventoryPage").style.visibility = "hidden";
+  //document.getElementById("homePage").style.visibility = "visible";
+  //document.getElementById("accountingPage").style.visibility = "hidden";
+  //document.getElementById("CRMPage").style.visibility = "hidden";
+  //document.getElementById("inventoryPage").style.visibility = "hidden";
 
 
 homeBtn.addEventListener('click', ()=>{
     //ipc.send('loadHomePage')
-    document.getElementById("homePage").style.visibility = "visible";
-    document.getElementById("accountingPage").style.visibility = "hidden";
-    document.getElementById("CRMPage").style.visibility = "hidden";
-    document.getElementById("inventoryPage").style.visibility = "hidden";
+    //document.getElementById("homePage").style.visibility = "visible";
+    //document.getElementById("accountingPage").style.visibility = "hidden";
+    //document.getElementById("CRMPage").style.visibility = "hidden";
+    //document.getElementById("inventoryPage").style.visibility = "hidden";
+
+    var req = new XMLHttpRequest();
+    var homeBtn = document.getElementById("homePage");
+    req.open("GET", "homePage.txt", false);
+    req.addEventListener("load", function(){
+    document.getElementById('homePage').innerHTML = req.responseText;
+    });
+    req.send(null);
+
 })
 
 accountingBtn.addEventListener('click', ()=>{
     //ipc.send('loadAccountingPage')
-    document.getElementById("homePage").style.visibility = "hidden";
-    document.getElementById("accountingPage").style.visibility = "visible";
-    document.getElementById("CRMPage").style.visibility = "hidden";
-    document.getElementById("inventoryPage").style.visibility = "hidden";
+    //document.getElementById("homePage").style.visibility = "hidden";
+    //document.getElementById("accountingPage").style.visibility = "visible";
+    //document.getElementById("CRMPage").style.visibility = "hidden";
+    //document.getElementById("inventoryPage").style.visibility = "hidden";
+    var req = new XMLHttpRequest();
+    var accountingBtn = document.getElementById("accountingPage");
+    req.open("GET", "accountingPage.txt", false);
+    req.addEventListener("load", function(){
+    document.getElementById('homePage').innerHTML = req.responseText;
+    });
+    req.send(null);
 })
 
 CRMBtn.addEventListener('click', ()=>{
     //ipc.send('loadCRMPage')
-    document.getElementById("homePage").style.visibility = "hidden";
-    document.getElementById("accountingPage").style.visibility = "hidden";
-    document.getElementById("CRMPage").style.visibility = "visible";
-    document.getElementById("inventoryPage").style.visibility = "hidden";
+    //document.getElementById("homePage").style.visibility = "hidden";
+    //document.getElementById("accountingPage").style.visibility = "hidden";
+    //document.getElementById("CRMPage").style.visibility = "visible";
+    //document.getElementById("inventoryPage").style.visibility = "hidden";
+    var req = new XMLHttpRequest();
+    var CRMBtn = document.getElementById("CRMPage");
+    req.open("GET", "CRMPage.txt", false);
+    req.addEventListener("load", function(){
+    document.getElementById('homePage').innerHTML = req.responseText;
+    });
+    req.send(null);
 })
 
 inventoryBtn.addEventListener('click', ()=>{
     //ipc.send('loadInventoryPage')
-    document.getElementById("homePage").style.visibility = "hidden";
-    document.getElementById("accountingPage").style.visibility = "hidden";
-    document.getElementById("CRMPage").style.visibility = "hidden";
-    document.getElementById("inventoryPage").style.visibility = "visible";
+    //document.getElementById("homePage").style.visibility = "hidden";
+    //document.getElementById("accountingPage").style.visibility = "hidden";
+    //document.getElementById("CRMPage").style.visibility = "hidden";
+    //document.getElementById("inventoryPage").style.visibility = "visible";
+    var req = new XMLHttpRequest();
+    var inventoryBtn = document.getElementById("inventoryPage");
+    req.open("GET", "InventoryPage.txt", false);
+    req.addEventListener("load", function(){
+    document.getElementById('homePage').innerHTML = req.responseText;
+    });
+    req.send(null);
 })
+
+
+//Database Functionality and Connections
 

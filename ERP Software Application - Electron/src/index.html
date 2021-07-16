@@ -26,19 +26,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <title>ERP Software for Small Business</title>
         <link rel="stylesheet" href="styles/style.css">
         <!--<link rel="stylesheet" href="C:\Users\User\Desktop\ERP_For_Small_Business\bootstrap.min.css">-->
-        <script defer src="js/appFunctions.js"></script>
+        <script module="module" defer src="js/appFunctions.js"></script>
     </head>
     <body>
         <div class="mainApp">
             <div class="topBar">
                 <div class="titleBar">
                     <button id="showHideMenus" class="toggleButton"></button>
-                    <img src="icons/icons8-improvement-32.png" alt="">
+                    <img src="images/geochemLogo.png" alt="" width=100px height=35px>
                     <div class="title">
-                        ERP for Small Business
+                        
                     </div>
                 </div>
                 <div class="titleBarBtns">
@@ -61,18 +63,10 @@
                         </div>
                 </div>
                 <div class="contentPages">
-                    <div id = "homePage" class = "homePage"> Home Page
-                        <p class = "homePage mainContent">
-                            Here I can type whatever info I wish to display, such as my work scheduling form <br>
-                            
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdi6nw7UTRgCPlCYOEs9MRTsvSwSdUIZhM3XpnmdVceU1eVXg/viewform?embedded=true" width="50%" height="650px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                            
-                        </p>
-                        
-                    </div>
-                    <div id = "accountingPage" class = "accountingPage">Accounting Page</div>
-                    <div id = "CRMPage" class = "CRMPage">CRM Page</div>
-                    <div id = "inventoryPage" class = "inventoryPage">Inventory Page</div>
+                    <div id = "homePage" class = "homePage"></div>
+                    <div id = "accountingPage" class = "accountingPage"></div>
+                    <div id = "CRMPage" class = "CRMPage"></div>
+                    <div id = "inventoryPage" class = "inventoryPage"></div>
                 </div>
             </div>
         </div>

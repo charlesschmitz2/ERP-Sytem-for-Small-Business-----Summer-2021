@@ -1,0 +1,10 @@
+<div id = "homePage" class = "homePage"> <h4>Home Page</h4>
+    <p class = "homePage mainContent">
+         Here I can type whatever info I wish to display, such as my work scheduling form which has now been deleted but as you can see
+         this text here will just keep going and stay lined up. The way in which I decided to handle this is all the page hide visibilty.
+         This is not the most efficient way, an alternative could be to just an AJAX style of format to create synchronous events that 
+         alter the innerHTML elements to display different things. THIS IS WORKING<br>
+                                                                          
+    </p>
+                        
+</div>

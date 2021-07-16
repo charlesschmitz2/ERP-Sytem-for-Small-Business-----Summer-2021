@@ -75,6 +75,7 @@ function createWindow () {
     console.log('Loading Inventory Page');
   })
 
+
 }
 
 // This method will be called when Electron has finished

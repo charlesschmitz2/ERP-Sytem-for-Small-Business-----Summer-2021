@@ -1,0 +1,3 @@
+<div id = "inventoryPage" class = "inventoryPage"><h4>Inventory Page</h4>
+
+</div>

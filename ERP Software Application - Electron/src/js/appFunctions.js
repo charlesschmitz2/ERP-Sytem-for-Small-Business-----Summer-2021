@@ -86,6 +86,8 @@ accountingBtn.addEventListener('click', ()=>{
     //document.getElementById("accountingPage").style.visibility = "visible";
     //document.getElementById("CRMPage").style.visibility = "hidden";
     //document.getElementById("inventoryPage").style.visibility = "hidden";
+    
+    //displaying the page content using AJAX
     var req = new XMLHttpRequest();
     var accountingBtn = document.getElementById("accountingPage");
     req.open("GET", "accountingPage.txt", false);
@@ -93,7 +95,81 @@ accountingBtn.addEventListener('click', ()=>{
     document.getElementById('homePage').innerHTML = req.responseText;
     });
     req.send(null);
-})
+
+    //Since we have a connection to the database and its table we can query the database to get some value
+    const query = `
+        SELECT *
+        FROM mock_data
+    `;
+
+    const data = new Array();
+
+    pool.connect()
+        .then((client) => {
+            client.query(query)
+                .then(res => {
+                    for (let row of res.rows) {
+                        //console.log(row);
+                        data.push(row);
+                    }
+                    //console.log(data);
+                    checkData(data);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+    //Check if the data has been properly pushed 
+    function checkData(dataArray) {
+        if (dataArray.length > 0){   
+            console.log("Data is loaded!");
+            loadAccountingTable(dataArray);
+            return true;
+        }
+        else {
+            console.warn("Could Not Load Data :(");
+            return false;
+        }
+    }//CheckData
+
+    //Now we can display the data
+    const accoutingTableBody = document.querySelector("#accountingTable > tbody");
+   
+    function loadAccountingTable(data) {
+        //clears out exisitng table data
+        while(accoutingTableBody.firstChild){
+            accoutingTableBody.removeChild(accoutingTableBody.firstChild);
+        }
+        
+        //Populate the table
+
+        data.forEach((row) => {
+            const keys = Object.keys(row);
+            //console.log(keys);
+
+            const tr = document.createElement("tr")
+            keys.forEach((key)=> {
+                //console.log(`${key}: ${row[key]}`);
+                //console.log(row[key]);
+                const td = document.createElement("td");
+                td.textContent = row[key];
+                tr.appendChild(td);
+            });
+
+            accoutingTableBody.appendChild(tr);
+        });
+
+
+    }//loadAccountingTable
+
+ })
+
+    
+
 
 CRMBtn.addEventListener('click', ()=>{
     //ipc.send('loadCRMPage')
@@ -126,7 +202,7 @@ inventoryBtn.addEventListener('click', ()=>{
 })
 
 
-//Database Functionality and Connections
+//Database Functionality and Connections, each page click has a query that is executed within this database connection
 const {Pool, Client} = require('pg');
 
 
@@ -142,23 +218,4 @@ pool.on('error', (err, client) => {
     console.log('Error:', err);
 });
 
-const query = `
-SELECT *
-FROM mock_data
-`;
 
-pool.connect()
-    .then((client) => {
-        client.query(query)
-            .then(res => {
-                for (let row of res.rows) {
-                    console.log(row);
-                }
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    })
-    .catch(err => {
-        console.error(err);
-    });

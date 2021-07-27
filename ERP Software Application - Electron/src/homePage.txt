@@ -1,10 +1,68 @@
-<div id = "homePage" class = "homePage"> <h4>Home Page</h4>
+<div id = "homePage" class = "homePage"> <h4>Home Page</h4> <img src="icons/Marist_College_Seal_-_Vector.svg.png" alt="" width="200px" height="200px">
+    
     <p class = "homePage mainContent">
-         Here I can type whatever info I wish to display, such as my work scheduling form which has now been deleted but as you can see
-         this text here will just keep going and stay lined up. The way in which I decided to handle this is all the page hide visibilty.
-         This is not the most efficient way, an alternative could be to just an AJAX style of format to create synchronous events that 
-         alter the innerHTML elements to display different things. THIS IS WORKING<br>
-                                                                          
+         Developed by Charlie Schmitz with the guidance of Christopher Algozzine for the School of Computer Science and Mathematics Summer Research Fellowship Program
+         <br></br>
+
+        <div class = "mainContentWords"> 
+            <div class = "introContent">
+                    <b><u>My goal for this project implementation & mock-up</u></b> : 
+                    <br></br>
+                    As the son of a small business owner, I have personally the struggle of small businesses to learn and implement an effective ERP system. 
+                    Oftentimes, it is too time consuming and requires expertise. When implemented properly an ERP can greatly streamline business processes and 
+                    increase efficiency. I am seeking to reach out to local small businesses to gather information about the needs, wants, and desires of a new 
+                    system as well as the downfalls of the current systems. The development process I will roughly pursue is as follows: <br></br>
+                        (1) Define the goals and objectives <br></br>
+                        (2) Identify the target users, potential clients, and stakeholders <br></br>
+                        (3) Analyze the current state of affairs <br></br>
+                        (4) Understand business processes <br></br>
+                        (5) Plan! Set realistic expectations <br></br>
+                        (6) Ensure alignment with vision and mission of the system and the client <br></br>
+                        (7) Develop and deliver <br></br>
+                        (8) Observe, analyze, and interpret results (customer satisfaction) <br></br>
+
+            </div>
+            <div class = "flawsTableLeft">
+                <b><u>Some Current Systems Flaws/Area of improvements</u></b> :
+                    <ul>
+                        <li> Cost of ownership </li>
+                        <li> Security </li>
+                        <li> Outdated technology </li>
+                        <li> Speed </li>
+                        <li> Implementation </li>
+                        <li> Upgradability </li>
+                    </ul>
+                <img src="images/IMG_0179.PNG" alt="" width="600px" height="300px">
+            </div>
+        </div>
+<br></br>
+        <div class = "diagramOnERP">
+            <div class = "ERPDiagram">
+            <b><u>There are 13 most common modules/areas of focus for an ERP system, these are as follows</u></b> : <br></br>
+                <img src="images/infographic-erp-modules.jpg" alt="" width="400px" height="400px">* indicates modules demoed in this application
+            </div>
+            <div class = "ERPDiagramWords">
+            <br></br>
+                <ol>
+                    <li><b>Finance*</b></li>
+                    <li>Procurment</li>
+                    <li>Manufacturing</li>
+                    <li><b>Inventory Management*</b></li>
+                    <li>Order Management</li>
+                    <li>Warehouse Management</li>
+                    <li>Supply Chain Management</li>
+                    <li><b>Customer Relations Management (CRM)*</b></li>
+                    <li>Project Serive Resource Management (Project Management)</li>
+                    <li>Workforce Management</li>
+                    <li>Human Resource Management</li>
+                    <li>Ecommerce</li>
+                    <li>Marketing Automation</li>
+                </ol>
+            </div>
+        </div>
+                                         
     </p>
+
+    
                         
 </div>

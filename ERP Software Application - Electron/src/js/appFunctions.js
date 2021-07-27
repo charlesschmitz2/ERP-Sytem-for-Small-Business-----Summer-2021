@@ -11,6 +11,7 @@ var accountingPageActive = false
 var CRMPageActive = false
 var inventoryPageActive = false
 
+
 //Close App
 closeBtn.addEventListener('click', ()=>{
     ipc.send('closeApp')
@@ -96,77 +97,94 @@ accountingBtn.addEventListener('click', ()=>{
     });
     req.send(null);
 
+
+/* --------------- Query ---------------*/
     //Since we have a connection to the database and its table we can query the database to get some value
     const query = `
         SELECT *
         FROM mock_data
+        
     `;
 
+/* --------------- Create data array to hold query results ---------------*/
     const data = new Array();
 
-    pool.connect()
-        .then((client) => {
-            client.query(query)
-                .then(res => {
-                    for (let row of res.rows) {
-                        //console.log(row);
-                        data.push(row);
+
+/* --------------- Connect to the pool and run the query within a data array ---------------*/    
+
+                pool.connect()
+                    .then((client) => {
+                        client.query(query)
+                            .then(res => {
+                                for (let row of res.rows) {
+                                    //console.log(row);
+                                    data.push(row);
+                                }
+                                //console.log(data);
+                                checkData(data);
+                            })
+                            .catch(err => {
+                                console.error(err);
+                            });
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
+
+    //pool.end(); we are leaving it open so that each time someone chooses to reload or rerun the same query for this pool displayed it will continue to work
+
+
+/* --------------- Check if the data has been properly pushed, if it has then we can begin to load the table for this page ---------------*/
+
+                function checkData(dataArray) {
+                    if (dataArray.length > 0){   
+                        //console.log("Data is loaded!");
+                        //console.log(dataArray.length)
+                        loadAccountingTable(dataArray);
+                        return true;
                     }
-                    //console.log(data);
-                    checkData(data);
-                })
-                .catch(err => {
-                    console.error(err);
+                    else {
+                        console.warn("Could Not Load Data :( Go Back and Check your Query");
+                        return false;
+                    }
+                }//CheckData
+
+/* --------------- Load the Corresponding Table Rows with the objects that have been queried ---------------*/
+
+        //Loads the table full of the correct object elements taken from the postgres table that have been queried to an array of objects called data, each object represents one entry of the table
+            function loadAccountingTable(data) {
+                //clears out exisitng table data
+                while(accoutingTableBody.firstChild){
+                    accoutingTableBody.removeChild(accoutingTableBody.firstChild);
+                }
+                
+                //Populate the table
+
+                data.forEach((row) => {
+                    const keys = Object.keys(row);
+                    //console.log(keys);
+
+                    const tr = document.createElement("tr")
+                    keys.forEach((key)=> {
+                        //console.log(`${key}: ${row[key]}`);
+                        //console.log(row[key]);
+                        const td = document.createElement("td");
+                        td.textContent = row[key];
+                        tr.appendChild(td);
+                    });
+
+                    accoutingTableBody.appendChild(tr);
                 });
-        })
-        .catch(err => {
-            console.error(err);
-        });
 
-    //Check if the data has been properly pushed 
-    function checkData(dataArray) {
-        if (dataArray.length > 0){   
-            console.log("Data is loaded!");
-            loadAccountingTable(dataArray);
-            return true;
-        }
-        else {
-            console.warn("Could Not Load Data :(");
-            return false;
-        }
-    }//CheckData
+            }//loadAccountingTable
 
-    //Now we can display the data
+
+/* --------------- Display the Data ---------------*/
+
     const accoutingTableBody = document.querySelector("#accountingTable > tbody");
    
-    function loadAccountingTable(data) {
-        //clears out exisitng table data
-        while(accoutingTableBody.firstChild){
-            accoutingTableBody.removeChild(accoutingTableBody.firstChild);
-        }
-        
-        //Populate the table
 
-        data.forEach((row) => {
-            const keys = Object.keys(row);
-            //console.log(keys);
-
-            const tr = document.createElement("tr")
-            keys.forEach((key)=> {
-                //console.log(`${key}: ${row[key]}`);
-                //console.log(row[key]);
-                const td = document.createElement("td");
-                td.textContent = row[key];
-                tr.appendChild(td);
-            });
-
-            accoutingTableBody.appendChild(tr);
-        });
-
-
-    }//loadAccountingTable
-
- })
+ }) //end Home Button Click Event Listener
 
     
 

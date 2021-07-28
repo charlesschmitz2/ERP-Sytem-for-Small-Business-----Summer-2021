@@ -60,6 +60,9 @@
                 </ol>
             </div>
         </div>
+
+        This is where I can display some survey data or something like that or further information about the database,
+        the projects, or the functions behind the application or reasoning as to why it was chosen
                                          
     </p>
 

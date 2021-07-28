@@ -1,5 +1,6 @@
 <div id = "accountingPage" class = "accountingPage"><h4>Accounting Page</h4>
 
+
     <p class = "homePage mainContent"> 
         This is a Mock table that runs a select * query for our postgreSQL Database on our localhost, to refresh a page you can click on the page
         button again from the sidebar

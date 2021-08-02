@@ -24,6 +24,25 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadFile('src/index.html')
 
+  ipc.on('homePageActive', () => {
+    mainWindow.loadFile('src/homePage.html');
+  })
+
+  ipc.on('accountingPageActive', () => {
+    mainWindow.loadFile('src/accountingPage.html');
+  })
+
+  ipc.on('inventoryPageActive', () => {
+    mainWindow.loadFile('src/inventoryPage.html');
+  })
+
+  ipc.on('CRMPageActive', () => {
+    mainWindow.loadFile('src/CRMPage.html');
+  })
+
+
+
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <title>ERP Software for Small Business</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <!--<link rel="stylesheet" href="C:\Users\User\Desktop\ERP_For_Small_Business\bootstrap.min.css">-->
+        <script module="module" defer src="js/appFunctions.js"></script>
+    </head>
+    <body>
+        <div class="mainApp">
+            <div class="topBar">
+                <div class="titleBar">
+                    <button id="showHideMenus" class="toggleButton"></button>
+                    <img src="icons/1200px-Marist_Red_Foxes_logo.svg.png" alt="" width="40px" height="15px">
+                    <div class="title">
+                        
+                    </div>
+                </div>
+                <div class="titleBarBtns">
+                    <button id="minimizeBtn" class="topBtn minimizeBtn" title = 'Minimize'></button>
+                    <button id="maximizeBtn" class="topBtn maximizeBtn" title = 'Maximize'></button>
+                    <button id="closeBtn" class="topBtn closeBtn" title = 'Close'></button>
+                </div>
+            </div>
+            <div class="contentArea">
+                <div id="mySidebar" class="leftMenu">
+                    <br></br>
+                        <button id="homeBtn" class="homeBtn" title = 'Take Me to Home Page'>Home</button><br></br>
+                        <button id="accountingBtn" class="accountingBtn" title = 'Accounting Management'>Accounting</button><br></br>
+                        <button id="CRMBtn" class="CRMBtn" title = 'Customer Relationship Management'>CRM</button><br></br>
+                        <button id="inventoryBtn" class="inventoryBtn" title = 'Inventory Management'>Inventory Management</button><br></br>
+                        <button id="refresh" class="refresh">Do Thing</button><br></br>
+                        <div class = "bottomSidebar">
+                            <p class = "bottomSidebarOptions">Node.js Version: <span id="node-version"></span></p>
+                            <p class = "bottomSidebarOptions">Chromium Version: <span id="chrome-version"></span></p>
+                            <p class = "bottomSidebarOptions">Electron Version: <span id="electron-version"></span></p>
+                        </div>
+                </div>
+                <div class="contentPages">
+                    <div id = "homePage" class = "homePage"> 
+                            <div id = "homePage" class = "homePage"> <h4>Home Page</h4> <img src="icons/Marist_College_Seal_-_Vector.svg.png" alt="" width="200px" height="200px">
+                
+                            <p class = "homePage mainContent">
+                                Developed by Charlie Schmitz with the guidance of Christopher Algozzine for the School of Computer Science and Mathematics Summer Research Fellowship Program
+                                <br></br>
+                
+                                <div class = "mainContentWords"> 
+                                    <div class = "introContent">
+                                            <b><u>My goal for this project implementation & mock-up</u></b> : 
+                                            <br></br>
+                                            As the son of a small business owner, I have personally the struggle of small businesses to learn and implement an effective ERP system. 
+                                            Oftentimes, it is too time consuming and requires expertise. When implemented properly an ERP can greatly streamline business processes and 
+                                            increase efficiency. I am seeking to reach out to local small businesses to gather information about the needs, wants, and desires of a new 
+                                            system as well as the downfalls of the current systems. The development process I will roughly pursue is as follows: <br></br>
+                                                (1) Define the goals and objectives <br></br>
+                                                (2) Identify the target users, potential clients, and stakeholders <br></br>
+                                                (3) Analyze the current state of affairs <br></br>
+                                                (4) Understand business processes <br></br>
+                                                (5) Plan! Set realistic expectations <br></br>
+                                                (6) Ensure alignment with vision and mission of the system and the client <br></br>
+                                                (7) Develop and deliver <br></br>
+                                                (8) Observe, analyze, and interpret results (customer satisfaction) <br></br>
+                
+                                    </div>
+                                    <div class = "flawsTableLeft">
+                                        <b><u>Some Current Systems Flaws/Area of improvements</u></b> :
+                                            <ul>
+                                                <li> Cost of ownership </li>
+                                                <li> Security </li>
+                                                <li> Outdated technology </li>
+                                                <li> Speed </li>
+                                                <li> Implementation </li>
+                                                <li> Upgradability </li>
+                                            </ul>
+                                        <img src="images/IMG_0179.PNG" alt="" width="600px" height="300px">
+                                    </div>
+                                </div>
+                        <br></br>
+                                <div class = "diagramOnERP">
+                                    <div class = "ERPDiagram">
+                                    <b><u>There are 13 most common modules/areas of focus for an ERP system, these are as follows</u></b> : <br></br>
+                                        <img src="images/infographic-erp-modules.jpg" alt="" width="400px" height="400px">* indicates modules demoed in this application
+                                    </div>
+                                    <div class = "ERPDiagramWords">
+                                    <br></br>
+                                        <ol>
+                                            <li><b>Finance*</b></li>
+                                            <li>Procurment</li>
+                                            <li>Manufacturing</li>
+                                            <li><b>Inventory Management*</b></li>
+                                            <li>Order Management</li>
+                                            <li>Warehouse Management</li>
+                                            <li>Supply Chain Management</li>
+                                            <li><b>Customer Relations Management (CRM)*</b></li>
+                                            <li>Project Serive Resource Management (Project Management)</li>
+                                            <li>Workforce Management</li>
+                                            <li>Human Resource Management</li>
+                                            <li>Ecommerce</li>
+                                            <li>Marketing Automation</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                
+                                This is where I can display some survey data or something like that or further information about the database,
+                                the projects, or the functions behind the application or reasoning as to why it was chosen
+                                                                
+                            </p>
+                
+                            
+                                                
+                        </div>
+                </div>
+                    <div id = "accountingPage" class = "accountingPage"></div>
+                    <div id = "CRMPage" class = "CRMPage"></div>
+                    <div id = "inventoryPage" class = "inventoryPage"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+     
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+      

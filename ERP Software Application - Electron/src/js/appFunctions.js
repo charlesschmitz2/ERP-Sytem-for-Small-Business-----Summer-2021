@@ -70,12 +70,7 @@ homeBtn.addEventListener('click', ()=>{
     //document.getElementById("accountingPage").style.visibility = "hidden";
     //document.getElementById("CRMPage").style.visibility = "hidden";
     //document.getElementById("inventoryPage").style.visibility = "hidden";
-
-    homePageActive = true;
-    accountingPageActive = false;
-    inventoryPageActive = false;
-    CRMPageActive = false;
-
+    /*
     var req = new XMLHttpRequest();
     var homeBtn = document.getElementById("homePage");
     req.open("GET", "homePage.txt", false);
@@ -83,16 +78,40 @@ homeBtn.addEventListener('click', ()=>{
     document.getElementById('homePage').innerHTML = req.responseText;
     });
     req.send(null);
+    */
+
+    homePageActive = true;
+    accountingPageActive = false;
+    inventoryPageActive = false;
+    CRMPageActive = false;
+
+
+    ipc.send('homePageActive');
 
 })
 
+//-------------------------------------ACCOUNTING PAGE-------------------------------------
 
+//This event listener is for the inital loading of the page
 accountingBtn.addEventListener('click', ()=>{
     //ipc.send('loadAccountingPage')
     //document.getElementById("homePage").style.visibility = "hidden";
     //document.getElementById("accountingPage").style.visibility = "visible";
     //document.getElementById("CRMPage").style.visibility = "hidden";
     //document.getElementById("inventoryPage").style.visibility = "hidden";
+
+    //displaying the page content using AJAX
+        /*
+        var req = new XMLHttpRequest();
+        var accountingBtn = document.getElementById("accountingPage");
+        req.open("GET", "accountingPage.txt", false);
+        req.setRequestHeader("Cache-Control", "no-cache");
+        req.setRequestHeader("Pragma", "no-cache");
+        req.addEventListener("load", function(){
+        document.getElementById('homePage').innerHTML = req.responseText;
+        });
+        req.send();
+        */
 
     //Flags to know which page is being displayed, may remove but could be useful for some cases
     homePageActive = false;
@@ -101,9 +120,36 @@ accountingBtn.addEventListener('click', ()=>{
     CRMPageActive = false;
 
 
-    /* --------------- Open and Connect to pool --> load and display correct page contents --> run query and fill in data into correct tables  ---------------*/
+    //Run Functions to display and load data
+    ipc.send('accountingPageActive');
+    
 
-    //Database Functionality and Connections, each page click has a query that is executed within this database connection
+ }) //end accounting Button Click Event Listener
+
+
+//button that if the accounting page is active so the elements are rendered then it will run the query to load the tables
+    var runQuery = document.getElementById('runQuery');
+    if(runQuery != null){
+        //this is the event listener that coorelates to the 'Run Query' button on the accounting page
+        runQuery.addEventListener('click', () => {
+            runAccountingPage();
+            console.log("running");
+        })
+    }
+ 
+ //takes a query strong and opens connection to postgres where the table functions are then run and displayed to the user
+    function runAccountingPage(){
+        /* --------------- Query ---------------*/
+            //Since we have a connection to the database and its table we can query the database to get some value
+            const query = `
+                SELECT *
+                FROM mock_data
+                
+            `;
+
+        /* --------------- Open and Connect to pool --> load and display correct page contents --> run query and fill in data into correct tables  ---------------*/
+
+        //Database Functionality and Connections, each page click has a query that is executed within this database connection
         const {Pool, Client} = require('pg');
 
 
@@ -119,46 +165,17 @@ accountingBtn.addEventListener('click', ()=>{
             console.log('Error:', err);
         });
 
-    //Run Functions to display and load data
-    displayAccountingPage();
+        doAllTableLoading(query);
+        pool.end();
 
-        /* --------------- Query ---------------*/
-                    //Since we have a connection to the database and its table we can query the database to get some value
-                    const query = `
-                        SELECT *
-                        FROM mock_data
-                        
-                    `;
-
-    doAllTableLoading(query);
-
-    //Close the pool connection so that there are not multiple pools running at one time, if it is not closed you can only refresh up to 11 times
-    //as you hit the limit that is allowed to be run at one time. This can be edited and changed with a bit more knowledge but is acceptable for a small
-    //business and for our testing purposes so I can leave it as this as it is the simplest default option.
-    pool.end();
-    
-    
-    function displayAccountingPage(){ //displaying the page content using AJAX
-        var req = new XMLHttpRequest();
-        var accountingBtn = document.getElementById("accountingPage");
-        req.open("GET", "accountingPage.txt", false);
-        req.setRequestHeader("Cache-Control", "no-cache");
-        req.setRequestHeader("Pragma", "no-cache");
-        req.addEventListener("load", function(){
-        document.getElementById('homePage').innerHTML = req.responseText;
-        });
-        req.send();
-    }
-
-
-    function doAllTableLoading(query){
+            function doAllTableLoading(query){
 
                 /* --------------- Create data array to hold query results ---------------*/
                     const data = new Array();
-
-
+    
+    
                 /* --------------- Connect to the pool and run the query within a data array ---------------*/    
-
+    
                                 pool.connect()
                                     .then((client) => {
                                         client.query(query)
@@ -177,12 +194,12 @@ accountingBtn.addEventListener('click', ()=>{
                                     .catch(err => {
                                         console.error(err);
                                     });
-
+    
                     //pool.end(); we are leaving it open so that each time someone chooses to reload or rerun the same query for this pool displayed it will continue to work
-
-
+    
+    
                 /* --------------- Check if the data has been properly pushed, if it has then we can begin to load the table for this page ---------------*/
-
+    
                                 function checkData(dataArray) {
                                     if (dataArray.length > 0){   
                                         //console.log("Data is loaded!");
@@ -195,9 +212,9 @@ accountingBtn.addEventListener('click', ()=>{
                                         return false;
                                     }
                                 }//CheckData
-
+    
                 /* --------------- Load the Corresponding Table Rows with the objects that have been queried ---------------*/
-
+    
                         //Loads the table full of the correct object elements taken from the postgres table that have been queried to an array of objects called data, each object represents one entry of the table
                             function loadAccountingTable(data) {
                                 //clears out exisitng table data
@@ -206,11 +223,11 @@ accountingBtn.addEventListener('click', ()=>{
                                 }
                                 
                                 //Populate the table
-
+    
                                 data.forEach((row) => {
                                     const keys = Object.keys(row);
                                     //console.log(keys);
-
+    
                                     const tr = document.createElement("tr")
                                     keys.forEach((key)=> {
                                         //console.log(`${key}: ${row[key]}`);
@@ -219,28 +236,33 @@ accountingBtn.addEventListener('click', ()=>{
                                         td.textContent = row[key];
                                         tr.appendChild(td);
                                     });
-
+    
                                     accoutingTableBody.appendChild(tr);
                                 });
-
+    
                             }//loadAccountingTable
                 
-
-        /* --------------- Display the Data ---------------*/
-
-            const accoutingTableBody = document.querySelector("#accountingTable > tbody");
-
-     }//doAllTableLoading
-
- }) //end Home Button Click Event Listener
+    
+                /* --------------- Display the Data ---------------*/
+    
+                const accoutingTableBody = document.querySelector("#accountingTable > tbody");
+    
+            }//doAllTableLoading 
 
 
+    }//runAccountingPage
+
+
+        
+
+//-------------------------------------CRM PAGE-------------------------------------
 CRMBtn.addEventListener('click', ()=>{
     //ipc.send('loadCRMPage')
     //document.getElementById("homePage").style.visibility = "hidden";
     //document.getElementById("accountingPage").style.visibility = "hidden";
     //document.getElementById("CRMPage").style.visibility = "visible";
     //document.getElementById("inventoryPage").style.visibility = "hidden";
+    /*
     var req = new XMLHttpRequest();
     var CRMBtn = document.getElementById("CRMPage");
     req.open("GET", "CRMPage.txt", false);
@@ -248,14 +270,24 @@ CRMBtn.addEventListener('click', ()=>{
     document.getElementById('homePage').innerHTML = req.responseText;
     });
     req.send(null);
+    */
+
+    homePageActive = false;
+    accountingPageActive = false;
+    inventoryPageActive = false;
+    CRMPageActive = true;
+
+    ipc.send('CRMPageActive');
 })
 
+//-------------------------------------INVENTORY PAGE-------------------------------------
 inventoryBtn.addEventListener('click', ()=>{
     //ipc.send('loadInventoryPage')
     //document.getElementById("homePage").style.visibility = "hidden";
     //document.getElementById("accountingPage").style.visibility = "hidden";
     //document.getElementById("CRMPage").style.visibility = "hidden";
     //document.getElementById("inventoryPage").style.visibility = "visible";
+    /*
     var req = new XMLHttpRequest();
     var inventoryBtn = document.getElementById("inventoryPage");
     req.open("GET", "InventoryPage.txt", false);
@@ -263,6 +295,14 @@ inventoryBtn.addEventListener('click', ()=>{
     document.getElementById('homePage').innerHTML = req.responseText;
     });
     req.send(null);
+    */
+
+    homePageActive = false;
+    accountingPageActive = false;
+    inventoryPageActive = true;
+    CRMPageActive = false;
+
+    ipc.send('inventoryPageActive');
 })
 
 

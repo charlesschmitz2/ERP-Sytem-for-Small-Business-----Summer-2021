@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     //Load the home page on the intial launch of the application from the homePage.txt file
+    /*
     var req = new XMLHttpRequest();
     var loadContentInitial = document.getElementById("homePage");
     req.open("GET", "homePage.txt", false);
@@ -16,11 +17,14 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('homePage').innerHTML = req.responseText;
     });
     req.send(null);
+    */
   
     for (const dependency of ['chrome', 'node', 'electron']) {
       replaceText(`${dependency}-version`, process.versions[dependency])
     }
   })
+
+
 
 
   

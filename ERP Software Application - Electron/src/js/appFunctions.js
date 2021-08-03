@@ -143,7 +143,7 @@ accountingBtn.addEventListener('click', ()=>{
             //Since we have a connection to the database and its table we can query the database to get some value
             const query = `
                 SELECT *
-                FROM mock_data
+                FROM fact_sales;
                 
             `;
 

@@ -25,7 +25,7 @@ function createWindow () {
   mainWindow.loadFile('src/index.html')
 
   ipc.on('homePageActive', () => {
-    mainWindow.loadFile('src/homePage.html');
+    mainWindow.loadFile('src/index.html');
   })
 
   ipc.on('accountingPageActive', () => {
@@ -38,6 +38,10 @@ function createWindow () {
 
   ipc.on('CRMPageActive', () => {
     mainWindow.loadFile('src/CRMPage.html');
+  })
+
+  ipc.on('orderFormPageActive', () => {
+    mainWindow.loadFile('src/orderForm.html');
   })
 
 
@@ -93,6 +97,11 @@ function createWindow () {
   ipc.on('loadInventoryPage', ()=>{
     console.log('Loading Inventory Page');
   })
+
+  ipcMain.on('form-submission', function (event, firstname) {
+    console.log("this is the firstname from the form ->", firstname)
+});
+
 
 
 }

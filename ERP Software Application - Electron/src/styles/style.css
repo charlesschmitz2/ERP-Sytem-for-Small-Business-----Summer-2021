@@ -27,8 +27,8 @@ html, body {
     flex-direction: row;
     width: 100%;
     height: 30px;
-    border-bottom: 3px solid #262931;
-    background-color: #262931;
+    border-bottom: 3px solid #1b1d23;
+    background-color: #1b1d23;
     -webkit-user-select: none;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
@@ -67,7 +67,7 @@ html, body {
   }
   
   .titleBar > .toggleButton:active {
-    background-color: #6e557c;
+    background-color: rgb(238, 108, 108);
   }
   
   .titleBar > img {
@@ -108,7 +108,7 @@ html, body {
   }
   
   .titleBarBtns > .topBtn:active {
-    background-color: #6e557c;
+    background-color: rgb(238, 108, 108);
   }
   
   .titleBarBtns > .minimizeBtn {
@@ -138,7 +138,7 @@ html, body {
   .contentArea > .leftMenu {
     width:0px;
     height:100%;
-    background-color: #262931f3;
+    background-color: #1b1d23f3;
     transition: 0.3s;
 
     display:table-cell;
@@ -179,7 +179,7 @@ html, body {
     /*background-color: #262931f3;*/
   }
   .homeBtn:active {
-    background-color: #6e557cf1;
+    background-color: #2f323bf3;;
   }
 
   .homeBtn::after {
@@ -187,7 +187,7 @@ html, body {
     width: 0px;
     height: 1px;
     display: block;
-    background: #c371f3f1;
+    background: rgb(238, 108, 108);
     transition: 300ms;
   }
   
@@ -218,14 +218,14 @@ html, body {
     /*background-color: #262931f3;*/
   }
   .accountingBtn:active {
-    background-color: #6e557cf1;
+    background-color: #2f323bf3;
   }
   .accountingBtn::after {
     content: '';
     width: 0px;
     height: 1px;
     display: block;
-    background: #c371f3f1;
+    background: rgb(238, 108, 108);;
     transition: 300ms;
   }
   .accountingBtn:hover::after {
@@ -255,14 +255,14 @@ html, body {
   }
 
   .CRMBtn:active {
-    background-color: #6e557cf1;
+    background-color: #2f323bf3;
   }
   .CRMBtn::after {
     content: '';
     width: 0px;
     height: 1px;
     display: block;
-    background: #c371f3f1;
+    background: rgb(238, 108, 108);
     transition: 300ms;
   }
   .CRMBtn:hover::after {
@@ -292,19 +292,143 @@ html, body {
   }
 
   .inventoryBtn:active {
-    background-color: #6e557cf1;
+    background-color: #2f323bf3;
   }
   .inventoryBtn::after {
     content: '';
     width: 0px;
     height: 1px;
     display: block;
-    background: #c371f3f1;
+    background: rgb(238, 108, 108);
     transition: 300ms;
   }
   .inventoryBtn:hover::after {
     width: 100%;
   }
+
+
+   /*----Order Form Page----*/
+   .orderFormBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+    cursor: pointer;
+    vertical-align: middle;
+    
+    /*background-image: url('../icons/icons8-inventory-flow-32.png');*/
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e7e7e7;
+  
+  }
+  .orderFormBtn:hover{
+    /*background-color: #262931f3;*/
+  }
+
+  .orderFormBtn:active {
+    background-color: #2f323bf3;
+  }
+  .orderFormBtn::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: rgb(238, 108, 108);
+    transition: 300ms;
+  }
+  .orderFormBtn:hover::after {
+    width: 100%;
+  }
+
+  
+.form-style-2{
+	
+	padding: 20px 12px 10px 20px;
+	font: 13px
+}
+.form-style-2-heading{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+}
+.form-style-2 label{
+	display: block;
+	margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+	width: 100px;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+.form-style-2 span.required{
+	color:red;
+}
+.form-style-2 .tel-number-field{
+	width: 40px;
+	text-align: center;
+}
+.form-style-2 input.input-field, .form-style-2 .select-field{
+	width: 48%;	
+}
+.form-style-2 input.input-field, 
+.form-style-2 .tel-number-field, 
+.form-style-2 .textarea-field, 
+ .form-style-2 .select-field{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+	outline: none;
+}
+.form-style-2 .input-field:focus, 
+.form-style-2 .tel-number-field:focus, 
+.form-style-2 .textarea-field:focus,  
+.form-style-2 .select-field:focus{
+	border: 1px solid rgb(238, 108, 108);
+}
+.form-style-2 .textarea-field{
+	height:100px;
+	width: 55%;
+}
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #145da0;
+	color: #fff;
+	
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{
+	background: #2476c4;
+	color: #fff;
+}
+
+.orderForm{
+  margin: auto;
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+
+      
 
 
   /*----Content Page----*/
@@ -336,6 +460,13 @@ html, body {
     color: f5f5f5
   }
   .contentPages > .inventoryPage {
+    position: absolute;
+    margin-left: calc(50%-50vw);
+    width: 100%;
+    color: f5f5f5
+  }
+
+  .contentPages > .orderFormPage {
     position: absolute;
     margin-left: calc(50%-50vw);
     width: 100%;
@@ -444,7 +575,7 @@ html, body {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
-    color: purple;
+    color: rgb(238, 108, 108);
   }
   
   @media screen and (max-width: 600px) {
@@ -536,12 +667,5 @@ html, body {
   border: 3px solid #1b1d23;
 }
 
-
-  
-  
-  
-  
-  
-  
   
   

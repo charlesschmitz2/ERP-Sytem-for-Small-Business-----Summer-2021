@@ -10,6 +10,7 @@ var homePageActive = true
 var accountingPageActive = false
 var CRMPageActive = false
 var inventoryPageActive = false
+var orderFormPageActive = false;
 
 
 //Close App
@@ -84,6 +85,7 @@ homeBtn.addEventListener('click', ()=>{
     accountingPageActive = false;
     inventoryPageActive = false;
     CRMPageActive = false;
+    orderFormPageActive = false;
 
 
     ipc.send('homePageActive');
@@ -118,6 +120,7 @@ accountingBtn.addEventListener('click', ()=>{
     accountingPageActive = true;
     inventoryPageActive = false;
     CRMPageActive = false;
+    orderFormPageActive = false;
 
 
     //Run Functions to display and load data
@@ -276,6 +279,7 @@ CRMBtn.addEventListener('click', ()=>{
     accountingPageActive = false;
     inventoryPageActive = false;
     CRMPageActive = true;
+    orderFormPageActive = false;
 
     ipc.send('CRMPageActive');
 })
@@ -301,9 +305,86 @@ inventoryBtn.addEventListener('click', ()=>{
     accountingPageActive = false;
     inventoryPageActive = true;
     CRMPageActive = false;
+    orderFormPageActive = false;
 
     ipc.send('inventoryPageActive');
 })
+
+
+//-------------------------------------ORDER ENTRY PAGE-------------------------------------
+orderFormBtn.addEventListener('click', ()=>{
+
+    homePageActive = false;
+    accountingPageActive = false;
+    inventoryPageActive = false;
+    CRMPageActive = false;
+    orderFormPageActive = true;
+
+    ipc.send('orderFormPageActive');
+
+
+
+/* This is a more traditional method when doing this through a web based application, this connects with the server.js file that just acts as our api.
+   Here we are using electron as a more desktop centered application so the recommended way to handle the forms is through a communication with the ipc
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('myForm').addEventListener('submit', handleForm);
+        console.log("DOM Loaded");
+    });
+
+    function handleForm(ev) {
+        ev.preventDefault(); //stop the page reloading
+        //console.dir(ev.target);
+        let myForm = ev.target;
+        let fd = new FormData(myForm);
+
+        //add more things that were not in the form
+        fd.append('api-key', 'myApiKey');
+
+        //look at all the contents 
+        for (let key of fd.keys()) {
+            console.log(key, fd.get(key));
+        }
+
+        //send the request with the formdata
+        let url = "http://localhost:3000/";
+        let req = new Request(url, {
+            body: fd,
+            method: 'POST',
+        });
+        //console.log(req);
+        fetch(req)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log('Response from Server');
+                console.log(data);
+            })
+            .catch(console.warn);
+    }
+
+*/
+
+var submitBtn = document.getElementById("submitButton");
+console.log(submitBtn);
+if(submitBtn != null) {
+    submitBtn.addEventListener("submit", sendForm(event));
+}
+function sendForm(event) {
+    event.preventDefault() // stop the form from submitting
+
+    let firstname = document.getElementById("firstname").value;
+    ipcRenderer.send('form-submission', firstname)
+}
+
+
+})
+
+
+
+
+//alert( formData.get('field1') + '-' + formData.get('field2') + '-' + formData.get('field3') + '-' + formData.get('field4') + '-' + formData.get('field5') + '-' + formData.get('field6') + '-' + formData.get('field7') + '-' +formData.get('field8') + '-' + formData.get('field9'));
+
+
 
 
 
